@@ -1,0 +1,37 @@
+name: Build and Deploy
+
+on:
+  # 监听 main 分支上的 push 事件
+  push:
+    branches:
+      - main
+  # 手动触发部署
+  # workflow_dispatch: 
+
+jobs:
+  build-and-deploy:
+    # 构建环境使用 ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # 将代码拉到虚拟机
+      - name: Checkout
+        uses: actions/checkout@v2.3.1  
+        with:
+          persist-credentials: false
+      
+       # 下载依赖 打包项目
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+      
+      # 部署
+      - name: Deploy 🚀 
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          REPOSITORY_NAME: ccofhome/ccofhome.github.io
+          # 部署后提交到的分支
+          branch: static-pages
+          # 这里填打包好的目录名称
+          folder: dist
