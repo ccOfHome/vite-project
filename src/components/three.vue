@@ -24,7 +24,7 @@ import {
   PerspectiveCamera, 
   WebGLRenderer, 
   BoxGeometry, 
-  CubeGeometry, 
+  TubeGeometry, 
   MeshBasicMaterial, 
   Mesh, 
   TextureLoader, 
@@ -45,7 +45,7 @@ export default defineComponent({
     })
 
     const threeConfig = function() {
-      let canvas = document.getElementById("threeCanvas")
+      let canvas: any = document.getElementById("threeCanvas")
       renderer = new WebGLRenderer({
         canvas,
       })

@@ -82,7 +82,7 @@ export default defineComponent({
     const deleteItem = function () {
       if(state.checked.length == 0) return
       let temp: any = []
-      state.todoList.forEach(element => {
+      state.todoList.forEach((element: any) => {
         let index = state.checked.indexOf(element)
         if(index == -1) {
           temp.push(element)
@@ -91,7 +91,7 @@ export default defineComponent({
       state.todoList = temp
     }
 
-    const changeCheck = function(val) {
+    const changeCheck = function(val: any) {
       // console.log(val, state.checked)
     }
 

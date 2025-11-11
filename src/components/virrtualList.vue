@@ -63,12 +63,13 @@ export default defineComponent({
         DynamicScrollerItem
     },
     setup() {
-        const { ctx } = getCurrentInstance()
+        const instance: any = getCurrentInstance()
+        const ctx = instance?.ctx
         // console.log(ctx)
 
         const itemSize = ref(50) // 列表项高度
 
-        const state = reactive({
+        const state: any = reactive({
             items: [],
             items1: [],
             items2: [],
@@ -118,18 +119,18 @@ export default defineComponent({
         }
 
         onMounted(() => {
-            screenHeight.value = ctx.$refs.list.clientHeight
+            screenHeight.value = ctx?.$refs.list?.clientHeight
             startIndex.value = 0
             endIndex.value = startIndex.value + state.visibleCount
         })
 
-        const clickItem = (item) => {
+        const clickItem = (item: { id: any }) => {
           console.log(item, item.id)
         }
 
         const scrollEvent = function() {
             // 当前滚动位置
-            let scrollTop = ctx.$refs.list.scrollTop
+            let scrollTop = ctx?.$refs.list?.scrollTop
             // 此时的开始索引
             startIndex.value = Math.floor(scrollTop / itemSize.value)
             // 此时的结束索引

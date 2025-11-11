@@ -81,7 +81,7 @@ let scene : Scene
 let mesh : Mesh
 let camera : PerspectiveCamera
 let stats : Stats
-let mixer: AnimationMixer = null
+let mixer: AnimationMixer
 let clock : Clock
 let textureLoader: TextureLoader
 let grassland : Mesh
