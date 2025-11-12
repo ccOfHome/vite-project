@@ -119,6 +119,7 @@ export default defineComponent({
         }
 
         onMounted(() => {
+            console.log(ctx?.$refs)
             screenHeight.value = ctx?.$refs.list?.clientHeight
             startIndex.value = 0
             endIndex.value = startIndex.value + state.visibleCount
