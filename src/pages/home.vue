@@ -1,4 +1,3 @@
-import { toRefs } from 'vue';
 <template>
   <el-header>
     <el-row>
@@ -32,12 +31,12 @@ import { toRefs } from 'vue';
     </el-row>
   </el-header>
   <el-main>
-    <el-checkbox-group v-model="checked" @change="changeCheck">
-      <el-checkbox v-for="(item, index) in todoList"
+    <el-checkbox-group v-model="state.checked" @change="changeCheck">
+      <el-checkbox v-for="(item, index) in state.todoList"
       :key="index"
       :label="item" />
     </el-checkbox-group>
-    <div>{{ sum }}</div>
+    <div>{{ state.sum }}</div>
   </el-main>
   <el-footer>
     <el-input v-model="inputVal" placeholder="请输入添加的事件" />
@@ -116,7 +115,8 @@ export default defineComponent({
     })
 
     return {
-      ...toRefs(state),
+      // ...toRefs(state),
+      state,
       inputVal,
       addItem,
       deleteItem,

@@ -3,7 +3,7 @@
   <div>适用于列表每一项高度确定的情况，高度可设置成相同，也可单独配置每一项高度</div>
   <RecycleScroller
         class="scroller"
-        :items="items"
+        :items="state.items"
         :item-size="32"
         key-field="id"
         v-slot="{ item }"
@@ -15,7 +15,7 @@
   <!-- items: 需要渲染的列表，itemSize: 列表项的高度，keyField: 列表循环的key值 -->
   <br><hr><br>
   <div>适用于列表每一项高度不确定的情况</div>
-  <DynamicScroller class="scroller1" :items="items1" :min-item-size="50">
+  <DynamicScroller class="scroller1" :items="state.items1" :min-item-size="50">
     <template v-slot="{ item, index, active }">
       <DynamicScrollerItem
         :item="item"
@@ -35,12 +35,12 @@
   <!-- 最底层的可视区容器 -->
   <div ref="list" class="infinite-list-container" @scroll="scrollEvent">
     <!-- 中间的可滚动区域，z-index=-1，高度和真实列表相同，目的是出现相同的滚动条 -->
-    <div class="infinite-list-phantom" :style="{ height: listHeight + 'px' }"></div>
+    <div class="infinite-list-phantom" :style="{ height: state.listHeight + 'px' }"></div>
     <!-- 最上层的可视区列表，数据和偏移距离随着滚动距离的变化而变化 -->
-    <div class="infinite-list" :style="{ transform: getTransform }">
+    <div class="infinite-list" :style="{ transform: state.getTransform }">
       <div
         class="infinite-list-item"
-        v-for="item in visibleData"
+        v-for="item in state.visibleData"
         :key="item.id"
         :style="{ height: itemSize + 'px' }"
       >
@@ -143,7 +143,8 @@ export default defineComponent({
         }
 
         return {
-            ...toRefs(state),
+            // ...toRefs(state),
+            state,
             itemSize,
             scrollEvent,
             clickItem
