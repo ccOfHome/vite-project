@@ -115,7 +115,9 @@ export default defineComponent({
     })
 
     return {
-      ...toRefs(state),
+      todoList: state.todoList,
+      checked: state.checked,
+      sum: state.sum,
       inputVal,
       addItem,
       deleteItem,

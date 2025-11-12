@@ -26,9 +26,7 @@ import {
   PerspectiveCamera, 
   WebGLRenderer, 
   BoxGeometry, 
-  CubeGeometry,
   PlaneGeometry,
-  PlaneBufferGeometry,
   SphereGeometry,
   ShadowMaterial,
   MeshBasicMaterial,
@@ -52,9 +50,6 @@ import {
   PCFSoftShadowMap,
   Fog,
   Color,
-  Multiply,
-  MixOperation,
-  AddOperation,
   Object3D,
   AnimationClip,
   AudioListener,
@@ -117,7 +112,7 @@ export default defineComponent({
             // 创建纹理贴图加载器
             textureLoader = new TextureLoader()
 
-            let canvas = document.getElementById("djClub")
+            let canvas = document.getElementById("djClub") as HTMLCanvasElement
             // 渲染器
             renderer = new WebGLRenderer({
                 canvas,
@@ -341,7 +336,7 @@ export default defineComponent({
             // spot.lookAt(new Vector3(0, 0, 0))
             TweenMax.to(spot, 2, {
                 onComplete: () => {
-                    spot.lookAt(spot.target)
+                    spot.lookAt(spot.target.position)
                     // spot.lookAt(0, 0, 50)
                     // spot.lookAt(new Vector3(100, 0, 100))
                     // spot.color = spotLightColors[colorIndex]
@@ -395,10 +390,10 @@ export default defineComponent({
         // 添加辅助线
         const addHelper = function(sunLight : DirectionalLight) {
             // 添加辅助线
-            let gridHelper = new GridHelper(landSide, landSide)
-            gridHelper.material.opacity = 0
-		    gridHelper.material.transparent = true
-            scene.add(gridHelper)
+            const gridHelper: any = new GridHelper(landSide, landSide);
+            gridHelper.material.opacity = 0;
+            gridHelper.material.transparent = true;
+            scene.add(gridHelper);
             // 添加三维箭头
             // X
             let dirX = new Vector3(10, 0, 0) // 三维向量

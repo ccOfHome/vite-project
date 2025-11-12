@@ -143,7 +143,13 @@ export default defineComponent({
         }
 
         return {
-            ...toRefs(state),
+            items: state.items,
+            items1: state.items1,
+            items2: state.items2,
+            listHeight: state.listHeight,
+            visibleCount: state.visibleCount,
+            getTransform: state.getTransform,
+            visibleData: state.visibleData,
             itemSize,
             scrollEvent,
             clickItem

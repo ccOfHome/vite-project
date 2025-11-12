@@ -21,8 +21,8 @@ import {
 export default defineComponent({
   name: "Map",
   setup() {
-    const state = reactive({
-        map: null
+    const state = reactive<{ map: any }>({
+        map: null as any
     })
 
     onBeforeMount(() => {});
@@ -57,7 +57,8 @@ export default defineComponent({
           var trafficLayer = new AMap.TileLayer.Traffic({
               zIndex: 10
           });
-          state.map.add(trafficLayer);//添加图层到地图
+          // map 实例创建后再添加图层，避免空值风险
+          state.map && state.map.add(trafficLayer);//添加图层到地图
         })
         .catch((e) => {
           console.log(e);

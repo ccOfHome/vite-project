@@ -129,7 +129,6 @@ export default defineComponent({
     })
 
     return {
-      ...toRefs(state),
       msg,
       setMessage
     }

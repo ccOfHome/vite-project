@@ -19,7 +19,7 @@ jobs:
         with:
           persist-credentials: false
       
-       # 下载依赖 打包项目
+      # 下载依赖 打包项目
       - name: Install and Build
         run: |
           npm install
@@ -29,8 +29,8 @@ jobs:
       - name: Deploy 🚀 
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPOSITORY_NAME: ccOfHome/vite-project.github.io
+          # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # REPOSITORY_NAME: ccOfHome/vite-project.github.io
           # 部署后提交到的分支
           branch: static-pages
           # 这里填打包好的目录名称
