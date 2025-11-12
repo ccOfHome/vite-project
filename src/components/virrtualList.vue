@@ -65,7 +65,6 @@ export default defineComponent({
     setup() {
         const instance: any = getCurrentInstance()
         console.log(instance)
-        const ctx = instance?.ctx
         // console.log(ctx)
 
         const itemSize = ref(50) // 列表项高度
@@ -120,8 +119,8 @@ export default defineComponent({
         }
 
         onMounted(() => {
-            console.log(ctx, ctx?.$refs)
-            screenHeight.value = ctx?.$refs.list?.clientHeight
+            console.log(instance, instance?.refs.list)
+            screenHeight.value = instance?.refs.list?.clientHeight
             startIndex.value = 0
             endIndex.value = startIndex.value + state.visibleCount
         })
@@ -132,8 +131,8 @@ export default defineComponent({
 
         const scrollEvent = function() {
             // 
-            console.log(ctx, ctx?.$refs)
-            let scrollTop = ctx?.$refs.list?.scrollTop
+            console.log(instance, instance?.refs.list)
+            let scrollTop = instance?.refs.list?.scrollTop || 0
             // 此时的开始索引
             startIndex.value = Math.floor(scrollTop / itemSize.value)
             // 此时的结束索引
