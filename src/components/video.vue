@@ -65,7 +65,7 @@ export default defineComponent({
       state.video = document.getElementById("myVideo")
       state.video.volume = 0.5
       state.video.currentTime = 0
-      state.video.src = '../../public/276986.mp4'
+      state.video.src = '/276986.mp4'
       state.video.addEventListener("loadstart", (e: any) => {
           console.log('视频开始加载' + JSON.stringify(e))
       })

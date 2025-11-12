@@ -170,14 +170,14 @@ export default defineComponent({
             addHelper(sunLight)
 
             // 加载人物动画模型
-            // loadModels('../../public/models/Swing Dancing.fbx')
-            // loadModels('../../public/models/Hip Hop Dancing.fbx')
-            // loadModels('../../public/models/Dancing.fbx')
-            // loadModels('../../public/models/Flair.fbx')
-            // loadModels('../../public/models/Hip Hop Dancing (1).fbx')
-            // loadModels('../../public/models/Hip Hop Dancing (2).fbx')
-            // loadModels('../../public/models/House Dancing.fbx')
-            loadModels('../../public/models/Samba Dancing.fbx')
+            // loadModels('/models/Swing Dancing.fbx')
+            // loadModels('/models/Hip Hop Dancing.fbx')
+            // loadModels('/models/Dancing.fbx')
+            // loadModels('/models/Flair.fbx')
+            // loadModels('/models/Hip Hop Dancing (1).fbx')
+            // loadModels('/models/Hip Hop Dancing (2).fbx')
+            // loadModels('/models/House Dancing.fbx')
+            loadModels('/models/Samba Dancing.fbx')
             
             addGrassland()
             addFrontStage()
@@ -204,22 +204,22 @@ export default defineComponent({
             let geometry = new BoxGeometry(landSide, 10, landSide * 2)
             // let geometry = new PlaneGeometry( 100, 200 )
             let materials = [
-                new MeshBasicMaterial({ map: textureLoader.load('../../public/mesh/around.png'), side: DoubleSide }),
-                new MeshBasicMaterial({ map: textureLoader.load('../../public/mesh/around.png'), side: DoubleSide }),
+                new MeshBasicMaterial({ map: textureLoader.load('/mesh/around.png'), side: DoubleSide }),
+                new MeshBasicMaterial({ map: textureLoader.load('/mesh/around.png'), side: DoubleSide }),
                 new MeshPhongMaterial({ // MeshLambertMaterial MeshPhongMaterial
                     // color: 0xffffff,
                     // transparent: false,
-                    // map: textureLoader.load('../../public/mesh/top.png'),
-                    map: textureLoader.load('../../public/mesh/grasslight-big.jpg'),
+                    // map: textureLoader.load('/mesh/top.png'),
+                    map: textureLoader.load('/mesh/grasslight-big.jpg'),
                     // specular: 0x000000,
                     // combine: AddOperation,
                     side: DoubleSide
                 }),
-                new MeshBasicMaterial({ map: textureLoader.load('../../public/mesh/bottom.png'), side: DoubleSide }),
-                new MeshBasicMaterial({ map: textureLoader.load('../../public/mesh/around.png'), side: DoubleSide }),
-                new MeshBasicMaterial({ map: textureLoader.load('../../public/mesh/around.png'), side: DoubleSide }),
+                new MeshBasicMaterial({ map: textureLoader.load('/mesh/bottom.png'), side: DoubleSide }),
+                new MeshBasicMaterial({ map: textureLoader.load('/mesh/around.png'), side: DoubleSide }),
+                new MeshBasicMaterial({ map: textureLoader.load('/mesh/around.png'), side: DoubleSide }),
             ]
-            // let gt = textureLoader.load('../../public/mesh/grasslight-big.jpg')
+            // let gt = textureLoader.load('/mesh/grasslight-big.jpg')
             // let materials = new MeshPhongMaterial({ color: 0xffffff, map: gt, side: DoubleSide })
             grassland = new Mesh(geometry, materials)
             // grassland.rotation.x = - Math.PI / 2
@@ -236,7 +236,7 @@ export default defineComponent({
         // 添加前置舞台
         const addFrontStage = function() {
             let geometry = new PlaneGeometry(200, 60)
-            let gt = textureLoader.load('../../public/mesh/front.png')
+            let gt = textureLoader.load('/mesh/front.png')
             let materials = new MeshPhongMaterial({ color: 0xffffff, map: gt, side: DoubleSide })
             let frontStage = new Mesh(geometry, materials)
             frontStage.rotation.x = Math.PI * 2
@@ -249,7 +249,7 @@ export default defineComponent({
         // 添加后置舞台
         const addBackStage = function() {
             let geometry = new PlaneGeometry(200, 60)
-            let gt = textureLoader.load('../../public/mesh/back.png')
+            let gt = textureLoader.load('/mesh/back.png')
             let materials = new MeshPhongMaterial({ color: 0xffffff, map: gt, side: DoubleSide })
             let backStage = new Mesh(geometry, materials)
             backStage.rotation.x = Math.PI * 2
@@ -262,7 +262,7 @@ export default defineComponent({
         // 添加左右墙壁
         const addLeftRightStage = function() {
             let geometry = new PlaneGeometry(400, 60)
-            let gt = textureLoader.load('../../public/mesh/hardwood2_diffuse.jpg')
+            let gt = textureLoader.load('/mesh/hardwood2_diffuse.jpg')
             let materials = new MeshPhongMaterial({ color: 0xffffff, map: gt, side: DoubleSide })
             let leftStage = new Mesh(geometry, materials)
             // leftStage.rotation.x = Math.PI * 2
@@ -285,7 +285,7 @@ export default defineComponent({
         // 添加天花板
         const addUpStage = function() {
             let geometry = new PlaneGeometry(400, 200)
-            let gt = textureLoader.load('../../public/mesh/up.png')
+            let gt = textureLoader.load('/mesh/up.png')
             let materials = new MeshPhongMaterial({ color: 0xffffff, map: gt, side: DoubleSide })
             let frontStage = new Mesh(geometry, materials)
             frontStage.rotation.x = Math.PI / 2
@@ -464,7 +464,7 @@ export default defineComponent({
             let sound = new PositionalAudio(listener)
 
             let audioLoader = new AudioLoader()
-            audioLoader.load('../../public/music/wavefile_short.mp3', (buffer: any) => {
+            audioLoader.load('/music/wavefile_short.mp3', (buffer: any) => {
                 sound.setBuffer(buffer)
                 sound.setRefDistance(100)
                 sound.play()
