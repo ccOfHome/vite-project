@@ -1,3 +1,4 @@
+import { toRefs } from 'vue';
 <template>
   <el-header>
     <el-row>
@@ -115,9 +116,7 @@ export default defineComponent({
     })
 
     return {
-      todoList: state.todoList,
-      checked: state.checked,
-      sum: state.sum,
+      ...toRefs(state),
       inputVal,
       addItem,
       deleteItem,
